@@ -23,6 +23,13 @@ header {
   nav {
     background-color: $main-color;
   }
+  .left {
+    @include flex-base();
+  }
+  // .left-mob {
+  //   @include flex-base();
+  //   gap: 20px;
+  // }
   .main-nav {
     @include flex-base();
   }
@@ -33,7 +40,8 @@ header {
   #toggle-btn {
     display: none;
   }
-  .toggler-open {
+  .toggler-open,
+  .toggler-close {
     display: none;
   }
   .menu-item {
@@ -41,19 +49,21 @@ header {
     padding: 0 1rem;
     .menu-link {
       color: $secondary-color;
-      font-weight: 600;
+      font-weight: 400;
       padding: 1rem 0;
       display: block;
       text-align: center;
       white-space: nowrap;
-      transition: all 0.5s ease-in-out;
       &:hover {
         color: $primary-color;
       }
-      .phone{
+      .phone {
         @include flex-base();
         justify-content: center;
         gap: 8px;
+      }
+      .vis {
+        font-weight: 500;
       }
     }
   }
@@ -61,18 +71,35 @@ header {
   /* targets screens with max-width 375 */
 
   @media (max-width: 375px) {
+    .container {
+      max-width: 343px;
+    }
     .toggler-open {
       font-size: 1.5rem;
       display: block;
       cursor: pointer;
       color: #fff;
     }
-
+    .vis {
+      display: none;
+      visibility: hidden;
+    }
     .navbar {
       display: none;
     }
-
+    .toggler-close {
+      z-index: 1;
+      display: block;
+      position: fixed;
+      padding-top: 60px;
+      padding-bottom: 60px;
+      padding-right: 23px;
+      padding-left: 1000px;
+      top: 0;
+      right: 0;
+    }
     .main-nav input[type="checkbox"]:checked ~ .navbar {
+      z-index: 2;
       display: block;
       position: absolute;
       background-color: $main-color;
@@ -81,43 +108,39 @@ header {
       top: 0px;
       padding: 15px;
     }
-
+    .icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
     .menu-item {
       margin: 15px 0;
       padding: 0;
+      p {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 175%;
+        text-decoration: underline;
+        text-decoration-skip-ink: none;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.5);
+        padding-top: 60px;
+      }
+      .req {
+        padding-top: 8px;
+      }
     }
 
     .menu-link {
-      font-size: 1.125rem;
-      color: #261f44;
-      padding: 0;
-    }
-
-    .dropdown-menu {
-      position: static;
-      display: none;
-      margin-top: 0;
-      background: none;
-    }
-
-    .menu-item.dropdown:hover > .dropdown-menu,
-    .menu-item.dropdown-submenu:hover > .dropdown-menu {
-      display: block;
-      animation: fadeIn 1s ease;
-    }
-
-    .dropdown-submenu .toggle-dropdown::after {
-      margin-left: 0.5em;
-    }
-  }
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
+      font-weight: 500;
+      font-size: 24px;
+      letter-spacing: 0.02em;
+      span {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 83%;
+        text-align: center;
+      }
     }
   }
 }
