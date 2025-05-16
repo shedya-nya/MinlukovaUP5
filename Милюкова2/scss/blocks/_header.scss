@@ -1,0 +1,123 @@
+$main-color: #ffffff;
+$primary-color: #f50e30;
+$secondary-color: #000000;
+
+@mixin flex-base {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header {
+  padding-top: 28px;
+  .container {
+    max-width: 1319px;
+    margin: 0 auto;
+  }
+  li {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+  }
+  nav {
+    background-color: $main-color;
+  }
+  .main-nav {
+    @include flex-base();
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+  }
+  #toggle-btn {
+    display: none;
+  }
+  .toggler-open {
+    display: none;
+  }
+  .menu-item {
+    position: relative;
+    padding: 0 1rem;
+    .menu-link {
+      color: $secondary-color;
+      font-weight: 600;
+      padding: 1rem 0;
+      display: block;
+      text-align: center;
+      white-space: nowrap;
+      transition: all 0.5s ease-in-out;
+      &:hover {
+        color: $primary-color;
+      }
+      .phone{
+        @include flex-base();
+        justify-content: center;
+        gap: 8px;
+      }
+    }
+  }
+
+  /* targets screens with max-width 375 */
+
+  @media (max-width: 375px) {
+    .toggler-open {
+      font-size: 1.5rem;
+      display: block;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .navbar {
+      display: none;
+    }
+
+    .main-nav input[type="checkbox"]:checked ~ .navbar {
+      display: block;
+      position: absolute;
+      background-color: $main-color;
+      width: 100%;
+      left: 0px;
+      top: 0px;
+      padding: 15px;
+    }
+
+    .menu-item {
+      margin: 15px 0;
+      padding: 0;
+    }
+
+    .menu-link {
+      font-size: 1.125rem;
+      color: #261f44;
+      padding: 0;
+    }
+
+    .dropdown-menu {
+      position: static;
+      display: none;
+      margin-top: 0;
+      background: none;
+    }
+
+    .menu-item.dropdown:hover > .dropdown-menu,
+    .menu-item.dropdown-submenu:hover > .dropdown-menu {
+      display: block;
+      animation: fadeIn 1s ease;
+    }
+
+    .dropdown-submenu .toggle-dropdown::after {
+      margin-left: 0.5em;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}

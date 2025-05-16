@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+header {
+  padding-top: 28px;
+  /* targets screens with max-width 375 */
+}
+header .container {
+  max-width: 1319px;
+  margin: 0 auto;
+}
+header li {
+  list-style: none;
+}
+header a {
+  text-decoration: none;
+}
+header nav {
+  background-color: #ffffff;
+}
+header .main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .navbar {
+  display: flex;
+  align-items: center;
+}
+header #toggle-btn {
+  display: none;
+}
+header .toggler-open {
+  display: none;
+}
+header .menu-item {
+  position: relative;
+  padding: 0 1rem;
+}
+header .menu-item .menu-link {
+  color: #000000;
+  font-weight: 600;
+  padding: 1rem 0;
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.5s ease-in-out;
+}
+header .menu-item .menu-link:hover {
+  color: #f50e30;
+}
+header .menu-item .menu-link .phone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+@media (max-width: 375px) {
+  header .toggler-open {
+    font-size: 1.5rem;
+    display: block;
+    cursor: pointer;
+    color: #fff;
+  }
+  header .navbar {
+    display: none;
+  }
+  header .main-nav input[type=checkbox]:checked ~ .navbar {
+    display: block;
+    position: absolute;
+    background-color: #ffffff;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    padding: 15px;
+  }
+  header .menu-item {
+    margin: 15px 0;
+    padding: 0;
+  }
+  header .menu-link {
+    font-size: 1.125rem;
+    color: #261f44;
+    padding: 0;
+  }
+  header .dropdown-menu {
+    position: static;
+    display: none;
+    margin-top: 0;
+    background: none;
+  }
+  header .menu-item.dropdown:hover > .dropdown-menu,
+  header .menu-item.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+    animation: fadeIn 1s ease;
+  }
+  header .dropdown-submenu .toggle-dropdown::after {
+    margin-left: 0.5em;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body .hid {
+  display: none;
+  visibility: hidden;
+}
+@media (max-width: 375px) {
+  body .hid {
+    display: block;
+    visibility: visible;
+  }
+  body .vis {
+    display: none;
+    visibility: hidden;
+  }
+}/*# sourceMappingURL=main.css.map */
